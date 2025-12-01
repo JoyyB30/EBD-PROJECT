@@ -13,12 +13,12 @@ _List all team members (5-6 students) below._
 
 | Name             | Student ID | Tutorial Group | GitHub Username |
 | :--------------- | :--------- | :------------- | :-------------- |
-| HANA KHALED         |13002847        6            	Hanakhaledd
-|JOY BASSEM           |13007189	       6              malakfawzyy
-| MALAK FAWZY         |13003606        6               	JoyyB30
-| AYA HUSSEIN         |13004531        6            	Ayahussein394
-| MALAK GHARIB        |13007525         2              malakgharib 
-| SALMA WALID         |13007299         6              salmawalidd
+| HANA KHALED         |13002847      |     6       |        	Hanakhaledd
+|JOY BASSEM           |13007189	     |     6        |           malakfawzyy
+| MALAK FAWZY         |13003606       |    6          |        	JoyyB30
+| AYA HUSSEIN         |13004531        |   6          |     	Ayahussein394
+| MALAK GHARIB        |13007525        |    2           |      malakgharib 
+| SALMA WALID         |13007299         |   6            |     salmawalidd
 
 ---
 
@@ -46,28 +46,34 @@ List ALL potential features/user stories envisioned for the complete product (be
 •	Record purchases from supplier
 •	Auto-calculate totals
 •	Track price trends of products
+
  Feature B — Supplier Interaction
 •	Supplier account creation
 •	Confirm purchase orders
 •	Digital receipts
 •	Supplier dashboard
+
  Feature C — Bank Integration
 •	Farmer credit score generation
 •	View full transaction history
 •	View loan repayment history
 •	Automated loan approval system
+
 Feature D — USSD/SMS Real Integration
 •	Connect with telecom APIs
 •	Real SMS logging
 •	Offline transaction syncing
+
 Feature E — Farmer Analytics
 •	Income vs Expenses charts
 •	Productivity trends
 •	Seasonal income prediction
+
  Feature F — Localization & Accessibility
 •	Arabic/English language toggle
 •	Voice-based menu navigation
 •	Large text mode
+
  Feature G — Security & Identity
 •	Biometric verification (future)
 •	Photo/scan of national ID
@@ -90,11 +96,11 @@ _Assign one distinct use case from Section 3.2 to each team member. This member 
 | Team Member | Assigned Use Case       | Brief Description of Responsibility              |
 | :---------- | :---------------------- | :----------------------------------------------- |
 | Hana Khaled |    Authentication  |       Register, Login, JWT handling, Password Hashing. |
-|Malak Fawzy       	Record sales	        prompts, posting sales data to backend, storing in DB   |
-| Aya Hussein    	Record Purchases      Supplier phone prompt, item entry, cost calc, DB store|
-| [Joy Bassem    	Monthly Totals	          Income/expense aggregation, API routes, calculations  |
-| Malak Gharib  	Loan Requests           	Loan form, national ID input, DB logic, loan status   |
-| Salma Walid 	  Bank Dashboard 	       Fetch farmer records, view loan requests, approve/reject |
+|Malak Fawzy    |      	Record sales	       |    prompts, posting sales data to backend, storing in DB   |
+| Aya Hussein    |   	Record Purchases      |   Supplier phone prompt, item entry, cost calc, DB store|
+| [Joy Bassem      | 	Monthly Totals	         |    Income/expense aggregation, API routes, calculations  |
+| Malak Gharib    | 	Loan Requests            |  	Loan form, national ID input, DB logic, loan status   |
+| Salma Walid 	   |  Bank Dashboard 	        |  Fetch farmer records, view loan requests, approve/reject |
 
 ---
 
@@ -134,6 +140,9 @@ const PurchaseSchema = new mongoose.Schema({
   totalCost: { type: Number, required: true },
   date: { type: Date, default: Date.now }
 });
+
+
+
 Loan Request Schema
 const LoanRequestSchema = new mongoose.Schema({
   farmerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
