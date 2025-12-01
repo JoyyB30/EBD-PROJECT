@@ -130,14 +130,23 @@ const SalesSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now }
 });
 
-Purchase Schema
 const PurchaseSchema = new mongoose.Schema({
-  farmerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  supplierPhone: { type: String, required: true },
+  farmerId: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User", 
+    required: true 
+  },
+
+  supplier: {
+    name: { type: String, required: true },
+    phone: { type: String, required: true }
+  },
+
   itemType: { type: String, required: true },
   quantity: { type: Number, required: true },
   unitPrice: { type: Number, required: true },
   totalCost: { type: Number, required: true },
+
   date: { type: Date, default: Date.now }
 });
 
