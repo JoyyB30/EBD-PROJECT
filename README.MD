@@ -136,7 +136,7 @@ const saleSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Sale', saleSchema);
 
-### purchases schema
+//Purchases Schema
 
 const mongoose = require('mongoose');
 
@@ -173,7 +173,7 @@ const purchaseSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Purchase', purchaseSchema);
 
-### Loan Request Schema
+//Loan Request Schema
 
 const mongoose = require('mongoose');
 
@@ -205,7 +205,7 @@ const loanRequestSchema = new mongoose.Schema({
 module.exports = mongoose.model('LoanRequest', loanRequestSchema);
 
 
-### summary schema 
+//Summary Schema 
 const mongoose = require('mongoose');
 
 const summarySchema = new mongoose.Schema({
@@ -222,7 +222,7 @@ module.exports = mongoose.model('Summary', summarySchema);
 
 
 
-### bank schema 
+//Bank Schema 
 
 const mongoose = require('mongoose');
 
@@ -249,4 +249,5 @@ const supplierSchema = new mongoose.Schema({
 const Supplier = mongoose.model('Supplier', supplierSchema);
 
 // Export the model so the routes file can use it
+
 module.exports = Supplier;
