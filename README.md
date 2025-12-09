@@ -104,17 +104,22 @@ _Assign one distinct use case from Section 3.2 to each team member. This member 
 
 _Define the initial Mongoose Schemas for your application’s main data models (User, Transaction, Account, etc.). You may use code blocks or pseudo-code._
 
-### User Schema
+### Authentication schema 
 
-User Schema
-const UserSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  phone: { type: String, required: true, unique: true },
-  nationalID: { type: String },
-  role: { type: String, enum: ["farmer", "bank", "admin"], default: "farmer" },
-  password: { type: String, required: true },
-}, { timestamps: true });
+const mongoose = require('mongoose');
 
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: String, required: true },
+    phone: { type: String, required: true, unique: true },
+    nationalID: { type: String, required: true },
+    password: { type: String, required: true }, // hashed password
+    role: { type: String, default: 'farmer' }   // fixed, no options
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model('User', userSchema);
 
 //Sales Schema
 
@@ -131,7 +136,7 @@ const saleSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Sale', saleSchema);
 
-// purchases schema
+### purchases schema
 
 const mongoose = require('mongoose');
 
@@ -168,7 +173,7 @@ const purchaseSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Purchase', purchaseSchema);
 
-//Loan Request Schema
+### Loan Request Schema
 
 const mongoose = require('mongoose');
 
@@ -200,7 +205,7 @@ const loanRequestSchema = new mongoose.Schema({
 module.exports = mongoose.model('LoanRequest', loanRequestSchema);
 
 
-// to get the total summary 
+### summary schema 
 const mongoose = require('mongoose');
 
 const summarySchema = new mongoose.Schema({
@@ -217,8 +222,7 @@ module.exports = mongoose.model('Summary', summarySchema);
 
 
 
-// bank schema 
-
+### bank schema 
 
 const mongoose = require('mongoose');
 
