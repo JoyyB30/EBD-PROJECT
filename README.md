@@ -59,10 +59,6 @@ List ALL potential features/user stories envisioned for the complete product (be
 •	View loan repayment history
 •	Automated loan approval system
 
-Feature D — USSD/SMS Real Integration
-•	Connect with telecom APIs
-•	Real SMS logging
-•	Offline transaction syncing
 
 Feature E — Farmer Analytics
 •	Income vs Expenses charts
@@ -120,44 +116,133 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-Sales Schema
-const SalesSchema = new mongoose.Schema({
-  farmerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+//Sales Schema
+
+const mongoose = require('mongoose');
+
+const saleSchema = new mongoose.Schema({
+  farmerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   productType: { type: String, required: true },
   quantity: { type: Number, required: true },
   pricePerUnit: { type: Number, required: true },
   totalPrice: { type: Number, required: true },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
 });
 
-const PurchaseSchema = new mongoose.Schema({
-  farmerId: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: "User", 
-    required: true 
-  },
+module.exports = mongoose.model('Sale', saleSchema);
 
+// purchases schema
+
+const mongoose = require('mongoose');
+
+const purchaseSchema = new mongoose.Schema({
+  farmerId: {
+    type: String,
+    required: true,
+  },
   supplier: {
     name: { type: String, required: true },
-    phone: { type: String, required: true }
+    phone: { type: String, required: true },
   },
-
-  itemType: { type: String, required: true },
-  quantity: { type: Number, required: true },
-  unitPrice: { type: Number, required: true },
-  totalCost: { type: Number, required: true },
-
-  date: { type: Date, default: Date.now }
+  itemType: {
+    type: String,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  unitPrice: {
+    type: Number,
+    required: true,
+  },
+  totalCost: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
+module.exports = mongoose.model('Purchase', purchaseSchema);
 
+//Loan Request Schema
 
-Loan Request Schema
-const LoanRequestSchema = new mongoose.Schema({
-  farmerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  nationalID: { type: String, required: true },
-  status: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
-  approvedAmount: { type: Number, default: 0 },
-  dateRequested: { type: Date, default: Date.now }
+const mongoose = require('mongoose');
+
+const loanRequestSchema = new mongoose.Schema({
+  farmerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  nationalID: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending',
+  },
+  approvedAmount: {
+    type: Number,
+    default: 0,
+  },
+  dateRequested: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
+module.exports = mongoose.model('LoanRequest', loanRequestSchema);
+
+
+// to get the total summary 
+const mongoose = require('mongoose');
+
+const summarySchema = new mongoose.Schema({
+  farmerId: { type: String, required: true },                    // or ObjectId later
+  type: { type: String, enum: ['income', 'expense'], required: true },
+  amount: { type: Number, required: true },
+  category: { type: String },
+  date: { type: Date, required: true },
+  description: { type: String },
+});
+
+module.exports = mongoose.model('Summary', summarySchema);
+
+
+
+
+// bank schema 
+
+
+const mongoose = require('mongoose');
+
+const supplierSchema = new mongoose.Schema({
+    supplierID: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    // You can add fields for loan requests later for the full implementation
+});
+
+// The model will be named 'Supplier' in MongoDB
+const Supplier = mongoose.model('Supplier', supplierSchema);
+
+// Export the model so the routes file can use it
+module.exports = Supplier;
