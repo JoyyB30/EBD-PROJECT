@@ -41,6 +41,7 @@ FarmConnect replaces paper, guesswork, and middlemen with a clean digital profil
 ### 3.1 Full Scope
 
 List ALL potential features/user stories envisioned for the complete product (beyond just this course).
+
  Feature A — Farmer Financial Recording
 •	Record daily sales
 •	Record purchases from supplier
@@ -251,4 +252,5 @@ const Supplier = mongoose.model('Supplier', supplierSchema);
 // Export the model so the routes file can use it
 
 module.exports = Supplier;
+
 
