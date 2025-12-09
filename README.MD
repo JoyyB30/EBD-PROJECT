@@ -104,7 +104,7 @@ Assign one distinct use case from Section 3.2 to each team member. This member i
 
 Define the initial Mongoose Schemas for your application’s main data models (User, Transaction, Account, etc.). You may use code blocks or pseudo-code.
 
-### Authentication schema 
+### Authentication Schema 
 
 const mongoose = require('mongoose');
 
@@ -121,7 +121,7 @@ const userSchema = new mongoose.Schema(
 
 module.exports = mongoose.model('User', userSchema);
 
-//Sales Schema
+### Sales Schema
 
 const mongoose = require('mongoose');
 
@@ -136,7 +136,7 @@ const saleSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Sale', saleSchema);
 
-//Purchases Schema
+### Purchases Schema
 
 const mongoose = require('mongoose');
 
@@ -173,7 +173,7 @@ const purchaseSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Purchase', purchaseSchema);
 
-//Loan Request Schema
+### Loan Request Schema
 
 const mongoose = require('mongoose');
 
@@ -205,7 +205,7 @@ const loanRequestSchema = new mongoose.Schema({
 module.exports = mongoose.model('LoanRequest', loanRequestSchema);
 
 
-//Summary Schema 
+### Summary Schema 
 const mongoose = require('mongoose');
 
 const summarySchema = new mongoose.Schema({
@@ -222,7 +222,7 @@ module.exports = mongoose.model('Summary', summarySchema);
 
 
 
-//Bank Schema 
+### Bank Schema 
 
 const mongoose = require('mongoose');
 
@@ -251,3 +251,4 @@ const Supplier = mongoose.model('Supplier', supplierSchema);
 // Export the model so the routes file can use it
 
 module.exports = Supplier;
+
