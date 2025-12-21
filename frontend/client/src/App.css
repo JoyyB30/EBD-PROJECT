@@ -1,0 +1,384 @@
+/* =========================
+   GLOBAL RESET + THEME
+   ========================= */
+
+:root {
+  --bg1: rgba(34, 197, 94, 0.20);
+  --bg2: rgba(59, 130, 246, 0.20);
+  --page-bg: linear-gradient(180deg, #f8fafc, #eef2f7);
+
+  --panel-bg: rgba(255, 255, 255, 0.92);
+  --border: #e5e7eb;
+
+  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 10px 22px rgba(0, 0, 0, 0.10);
+  --shadow-sm: 0 6px 14px rgba(0, 0, 0, 0.07);
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  --text: #0f172a;
+  --muted: #475569;
+
+  --green1: #22c55e;
+  --green2: #16a34a;
+  --red1: #ef4444;
+  --red2: #dc2626;
+  --blue: #2563eb;
+
+  --max: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* App background everywhere */
+#root {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 10% 10%, var(--bg1), transparent 60%),
+    radial-gradient(800px 500px at 90% 20%, var(--bg2), transparent 55%),
+    var(--page-bg);
+}
+
+/* ==================================
+   LAYOUT HELPERS (use on all pages)
+   ================================== */
+
+/* Put this around your pages: <div className="page"> ... */
+.page {
+  min-height: calc(100vh - 64px);
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 28px);
+}
+
+/* content container */
+.container {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: clamp(14px, 3vw, 28px);
+}
+
+/* Panel that holds content */
+.panel {
+  width: 100%;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(16px, 2.5vw, 26px);
+  backdrop-filter: blur(10px);
+}
+
+/* page headers */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 30px);
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ==================================
+   NAVBAR
+   ================================== */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* your layouts have nav > div wrapper */
+nav > div {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: 10px clamp(14px, 3vw, 22px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* left links wrapper (if you have links directly, still works) */
+nav a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 12px;
+  transition: background 0.15s ease, transform 0.08s ease;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  background: rgba(37, 99, 235, 0.10);
+}
+
+nav a:active {
+  transform: translateY(1px);
+}
+
+/* ==================================
+   FORMS + INPUTS
+   ================================== */
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(34, 197, 94, 0.55);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+}
+
+/* ==================================
+   BUTTONS
+   ================================== */
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 900;
+  background: #f3f4f6;
+  transition: transform 0.08s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  opacity: 0.94;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.btn-primary,
+button[type="submit"] {
+  color: #fff;
+  background: linear-gradient(135deg, var(--green1), var(--green2));
+  box-shadow: 0 10px 18px rgba(34, 197, 94, 0.18);
+}
+
+.btn-danger {
+  color: #fff;
+  background: linear-gradient(135deg, var(--red1), var(--red2));
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+/* ==================================
+   LIST ITEMS (Sales/Purchases/Loans)
+   ================================== */
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.list-item {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.actions{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ==================================
+   TABLES (Bank pages)
+   ================================== */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #eef2f7;
+  font-size: 14px;
+}
+
+th {
+  font-weight: 900;
+  background: rgba(248, 250, 252, 0.85);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==================================
+   HOME PAGE
+   ================================== */
+
+.home {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 28px);
+}
+
+.home-shell {
+  width: min(980px, 100%);
+  padding: clamp(18px, 3vw, 28px);
+  text-align: center;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+}
+
+.home-logo {
+  width: min(240px, 70%);
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.home-title {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 42px);
+  letter-spacing: -0.02em;
+}
+
+.home-subtitle {
+  margin: 8px 0 22px;
+  color: var(--muted);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.home-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ==================================
+   RESPONSIVE
+   ================================== */
+
+@media (max-width: 720px) {
+  nav > div {
+    justify-content: flex-start;
+  }
+
+  .page {
+    min-height: calc(100vh - 88px);
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-shell {
+    padding: 18px;
+  }
+
+  nav > div {
+    gap: 8px;
+  }
+
+  nav a {
+    padding: 6px 8px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+}
